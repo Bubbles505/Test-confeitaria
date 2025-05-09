@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confeitaria 𝒰𝓂 𝓈ℴ𝓃𝒽ℴ 𝒹ℯ 𝒶𝒸̧𝓊́𝒸𝒶𝓇</title>
+  <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.css">
+  <link rel="stylesheet" href="./carousel.css"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="./cookies.css" />
+  <link rel="shortcut icon" href="./cup.png" />
+  
+  <style>
+    :root {
+      --rosa-claro: #fff0f6;
+      --rosa-medio: #f8d9e6;
+      --rosa-escuro: #b03b6f;
+      --rosa-mais-escuro: #6b304b;
+      --rosa-vibrante: #ff69b4;
+      --texto-escuro: #504136;
+      --branco: #ffffff;
+    }
+    
+    .carousel-item img {
+      object-fit: cover;
+      height: 750px;
+      filter: brightness(0.9);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--rosa-claro);
+      color: var(--texto-escuro);
+    }
+
+    .texto {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      color: var(--texto-escuro);
+      width: 60%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .img {
+      text-align: center;
+      width: 80%;
+      margin: 40px auto;
+    }
+
+    /* Sidebar Estilizado */
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: var(--rosa-claro);
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+      z-index: 1100;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar a {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      padding: 12px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      color: var(--rosa-escuro);
+      display: block;
+      transition: 0.3s;
+      border-bottom: 1px solid var(--rosa-medio);
+    }
+
+    .sidebar a:hover {
+      background-color: var(--rosa-medio);
+      color: var(--rosa-mais-escuro);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 24px;
+      background: none;
+      border: none;
+      color: var(--rosa-escuro);
+      cursor: pointer;
+    }
+
+    /* Cabeçalho Principal */
+    header.top-header {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, var(--rosa-vibrante), var(--rosa-escuro));
+      color: var(--branco);
+      margin-top: -50px;
+      padding: 40px 0;
+      box-shadow: 0 4px 12px rgba(176, 59, 111, 0.2);
+      text-align: center;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: var(--branco);
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Menu de Navegação */
+    .menu-header {
+      background-color: var(--rosa-claro);
+      padding: 15px 0;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .menu-header button, .btn-comprar {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      padding: 12px 25px;
+      margin: 0 10px;
+      border-radius: 30px;
+      font-size: 16px;
+      background-color: var(--rosa-escuro);
+      color: var(--branco);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 8px rgba(176, 59, 111, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .menu-header button:hover, .btn-comprar:hover {
+      background-color: var(--rosa-vibrante);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(176, 59, 111, 0.4);
+    }
+
+    .menu-header button:active, .btn-comprar:active {
+      transform: translateY(0);
+      background-color: var(--rosa-mais-escuro);
+    }
+
+    .menu-header button a {
+      color: var(--branco);
+      text-decoration: none;
+    }
+
+    .menu-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 24px;
+      color: var(--branco);
+      cursor: pointer;
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .menu-button:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Container Personalizado */
+    .container-custom {
+      display: flex;
+      flex-direction: column;
+      background-color: var(--rosa-claro);
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 182, 193, 0.3);
+      width: 100%;
+      max-width: 1200px;
+      overflow: hidden;
+      border: 1px solid var(--rosa-medio);
+    }
+
+    .content {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .left-panel {
+      flex: 1;
+      background: linear-gradient(135deg, var(--rosa-escuro), var(--rosa-mais-escuro));
+      color: var(--branco);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .left-panel img {
+      width: 200px;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    }
+
+    .left-panel h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .left-panel p {
+      font-size: 1rem;
+      color: var(--rosa-medio);
+    }
+
+    .right-panel {
+      flex: 1;
+      background-color: var(--branco);
+      padding: 2.5rem;
+    }
+
+    .right-panel h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--rosa-escuro);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 1.2rem;
+    }
+
+    .input-group i {
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      transform: translateY(-50%);
+      color: var(--rosa-escuro);
+    }
+
+    .form-control {
+      background-color: var(--rosa-claro);
+      border: 1px solid var(--rosa-medio);
+      color: var(--rosa-mais-escuro);
+      border-radius: 10px;
+      padding-left: 40px;
+      transition: all 0.3s;
+    }
+
+    .form-control:focus {
+      border-color: var(--rosa-escuro);
+      box-shadow: 0 0 0 0.25rem rgba(176, 59, 111, 0.25);
+    }
+
+    .form-control::placeholder {
+      color: var(--rosa-medio);
+    }
+
+    .btn-primary {
+      background-color: var(--rosa-escuro);
+      color: var(--branco);
+      border: none;
+      width: 100%;
+      border-radius: 30px;
+      margin-top: 1rem;
+      padding: 0.8rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 8px rgba(176, 59, 111, 0.3);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--rosa-vibrante);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(176, 59, 111, 0.4);
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--rosa-escuro);
+      background-color: var(--rosa-claro);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid var(--rosa-medio);
+    }
+
+    .nav-links a:hover {
+      background-color: var(--rosa-escuro);
+      color: var(--branco);
+      transform: translateY(-2px);
+    }
+
+    .bi {
+      font-size: 1rem;
+    }
+
+    #notificacao {
+      text-align: center;
+      padding-bottom: 1rem;
+      color: var(--rosa-escuro);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+
+    /* Modal da História */
+    .historia-modal .modal-content {
+      border-radius: 20px;
+      overflow: hidden;
+      border: none;
+    }
+
+    .historia-modal .modal-header {
+      background: linear-gradient(135deg, var(--rosa-escuro), var(--rosa-vibrante));
+      color: white;
+      border-bottom: none;
+      padding: 20px;
+    }
+
+    .historia-modal .modal-body {
+      padding: 30px;
+      background-color: var(--rosa-claro);
+    }
+
+    .historia-modal .modal-footer {
+      background-color: var(--rosa-medio);
+      border-top: none;
+      justify-content: center;
+    }
+
+    /* Política de Privacidade */
+    .politica-privacidade {
+      position: fixed;
+      right: 30px;
+      bottom: 300px;
+      width: 350px;
+      height: 350px;
+      padding: 30px;
+      background-color: var(--rosa-mais-escuro);
+      color: var(--branco);
+      overflow-y: scroll;
+      text-align: justify;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--rosa-escuro);
+    }
+
+    .politica-privacidade a {
+      color: var(--rosa-medio);
+    }
+
+    .politica-privacidade h2, 
+    .politica-privacidade h3, 
+    .politica-privacidade h4 {
+      color: var(--branco);
+    }
+
+    /* Cookies */
+    .cookieConsentContainer {
+      z-index: 999;
+      width: 350px;
+      min-height: 20px;
+      box-sizing: border-box;
+      padding: 30px;
+      background: var(--rosa-escuro);
+      overflow: hidden;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: none;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      color: var(--branco);
+    }
+
+    .cookieConsentContainer .cookieTitle a {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: var(--branco);
+      font-size: 22px;
+      line-height: 20px;
+      display: block;
+    }
+
+    .cookieConsentContainer .cookieDesc p {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--branco);
+      font-size: 13px;
+      line-height: 20px;
+      display: block;
+      margin-top: 10px;
+    }
+
+    .cookieConsentContainer .cookieDesc a {
+      color: var(--rosa-medio);
+      text-decoration: underline;
+    }
+
+    .cookieConsentContainer .cookieButton a {
+      display: inline-block;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: var(--branco);
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 14px;
+      background: var(--rosa-mais-escuro);
+      box-sizing: border-box;
+      padding: 12px 24px;
+      text-align: center;
+      transition: all 0.3s;
+      border-radius: 30px;
+      text-decoration: none;
+    }
+
+    .cookieConsentContainer .cookieButton a:hover {
+      background: var(--rosa-vibrante);
+      transform: translateY(-2px);
+    }
+
+    /* Contato */
+    .contato {
+      background-color: var(--rosa-medio);
+      padding: 15px 0;
+      text-align: center;
+      color: var(--rosa-mais-escuro);
+      font-weight: bold;
+    }
+
+    /* Seção Sobre */
+    .sobre-confeitaria {
+      background-color: var(--branco);
+      padding: 40px 20px;
+      margin: 30px auto;
+      max-width: 1200px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    .sobre-confeitaria h2 {
+      color: var(--rosa-escuro);
+      margin-bottom: 20px;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+
+    .sobre-confeitaria p {
+      color: var(--texto-escuro);
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Cardápio */
+    .categoria-titulo {
+      color: var(--rosa-escuro);
+      text-align: center;
+      margin: 40px 0 20px;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      font-size: 28px;
+      position: relative;
+    }
+
+    .categoria-titulo:after {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(to right, var(--rosa-vibrante), var(--rosa-escuro));
+      margin: 10px auto 0;
+    }
+
+    .cards-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+      flex-wrap: wrap;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .card-produto {
+      width: 280px;
+      background-color: var(--branco);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      margin-bottom: 30px;
+    }
+
+    .card-produto:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(176, 59, 111, 0.2);
+    }
+
+    .card-imagem {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 3px solid var(--rosa-medio);
+    }
+
+    .card-corpo {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card-titulo {
+      color: var(--rosa-escuro);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .card-preco {
+      color: var(--rosa-mais-escuro);
+      font-weight: bold;
+      font-size: 22px;
+      margin: 15px 0;
+    }
+
+    /* Rodapé */
+    footer {
+      background-color: var(--rosa-escuro);
+      color: var(--branco);
+      padding: 30px 0;
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-social a {
+      color: var(--branco);
+      margin: 0 10px;
+      font-size: 20px;
+      transition: all 0.3s;
+    }
+
+    .footer-social a:hover {
+      color: var(--rosa-medio);
+      transform: translateY(-3px);
+    }
+
+    /* Responsividade */
+    @media (max-width: 980px) {
+      .cookieConsentContainer {
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        border-radius: 0;
+      }
+      
+      .politica-privacidade {
+        width: 90%;
+        right: 5%;
+        bottom: 100px;
+      }
+      
+      .texto {
+        width: 90%;
+      }
+      
+      .carousel-item img {
+        height: 500px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        flex-direction: column;
+      }
+      
+      .menu-header button, .btn-comprar {
+        margin: 5px;
+        padding: 10px 15px;
+        font-size: 14px;
+      }
+      
+      .card-produto {
+        width: 100%;
+        max-width: 350px;
+      }
+      
+      .categoria-titulo {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+    <button class="close-btn" onclick="fecharMenu()"><i class="fa-solid fa-xmark"></i></button>
+    <a href="#"><i class="fa-solid fa-cart-shopping"></i> Meu Carrinho</a>
+    <a href="#"><i class="fa-solid fa-user"></i> Meu Perfil</a>
+    <a href="#"><i class="fa-solid fa-heart"></i> Favoritos</a>
+    <a href="#"><i class="fa-solid fa-history"></i> Histórico</a>
+  </div>
+  
+  <!-- Cabeçalho Principal -->
+  <header class="top-header">
+    <div class="menu-button" onclick="abrirMenu()">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+    <div class="logo"><i class="fa-solid fa-cake-candles"></i> 𝒰𝓂 𝓈ℴ𝓃𝒽ℴ 𝒹ℯ 𝒶𝒸̧𝓊́𝒸𝒶𝓇</div>
+  </header>
+
+  <!-- Contato -->
+  <div class="contato">
+    <i class="fa-solid fa-phone"></i> Contato: (43) 94537-0681
+  </div>
+
+  <!-- Menu de Navegação -->
+  <div class="menu-header">
+    <button><a class="btn btn-link" href="./cardapio.html" target="_blank"><i class="fa-solid fa-utensils"></i> Cardápio</a></button>
+    <button><a class="btn btn-link" href="./delivery.html" target="_blank"><i class="fa-solid fa-truck"></i> Delivery</a></button>
+    <button onclick="abrirHistoria()"><i class="fa-solid fa-book-open"></i> Nossa História</button>
+    <button data-bs-toggle="modal" data-bs-target="#welcomeModal"><i class="fa-solid fa-user"></i> Login</button>
+  </div>
+
+  <!-- Conteúdo Principal -->
+  <main>
+    <!-- Carousel -->
+    <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="./cupcakes.png" class="d-block w-100" alt="Cupcakes coloridos">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Cupcakes Artesanais</h5>
+            <p>Feitos com amor e ingredientes selecionados</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="./doces.jpg" class="d-block w-100" alt="Variedade de doces">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Doces Finos</h5>
+            <p>Para todos os gostos e ocasiões</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="./bolo.jpg" class="d-block w-100" alt="Bolo decorado">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Bolos Personalizados</h5>
+            <p>Transformamos seus sonhos em realidade</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Próximo</span>
+      </button>
+    </div>
+
+    <!-- Sobre -->
+    <div class="texto">
+      <h1><i class="fa-solid fa-info-circle"></i> Sobre a Confeitaria</h1>
+      <h3>A Sweet Dreams surgiu com o desejo de misturar a arte com a culinária brasileira, e nosso objetivo é encantar as pessoas com o estilo e sabor dos nossos doces. Cada criação é feita com amor e dedicação para tornar seus momentos mais especiais.</h3>
+    </div>
+
+    <!-- Destaques -->
+    <div class="texto" style="margin-top: 50px;">
+      <div class="row">
+        <div class="col-md-4 text-center mb-4">
+          <i class="fas fa-star fa-3x mb-3" style="color: var(--rosa-escuro);"></i>
+          <h3>Qualidade</h3>
+          <p>Ingredientes selecionados e receitas exclusivas</p>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+          <i class="fas fa-heart fa-3x mb-3" style="color: var(--rosa-escuro);"></i>
+          <h3>Amor</h3>
+          <p>Cada doce é preparado com carinho e dedicação</p>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+          <i class="fas fa-birthday-cake fa-3x mb-3" style="color: var(--rosa-escuro);"></i>
+          <h3>Criatividade</h3>
+          <p>Designs personalizados para cada ocasião</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cardápio de Bolos -->
+    <h2 class="categoria-titulo">Bolos</h2>
+    <div class="cards-container">
+      <div class="card-produto">
+        <img src="./BoloDeChocolate.jpg" class="card-imagem" alt="Bolo de Chocolate">
+        <div class="card-corpo">
+          <h3 class="card-titulo">Bolo de Chocolate</h3>
+          <div class="card-preco">R$ 74,99</div>
+          <button class="btn-comprar">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+      
+      <div class="card-produto">
+        <img src="./BoloDeCenora.jpg" class="card-imagem" alt="Bolo de Cenoura">
+        <div class="card-corpo">
+          <h3 class="card-titulo">Bolo de Cenoura</h3>
+          <div class="card-preco">R$ 74,99</div>
+          <button class="btn-comprar">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+      
+      <div class="card-produto">
+        <img src="./BoloDeMorango.jpg" class="card-imagem" alt="Bolo de Morango">
+        <div class="card-corpo">
+          <h3 class="card-titulo">Bolo de Morango</h3>
+          <div class="card-preco">R$ 74,99</div>
+          <button class="btn-comprar">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+      
+      <div class="card-produto">
+        <img src="./BoloRedVelvet.png" class="card-imagem" alt="Bolo Red Velvet">
+        <div class="card-corpo">
+          <h3 class="card-titulo">Bolo Red Velvet</h3>
+          <div class="card-preco">R$ 74,99</div>
+          <button class="btn-comprar">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cardápio de Cupcakes -->
+    <h2 class="categoria-titulo">Cupcakes</h2>
+    <div class="cards-container">
+      <div class="card-produto">
+        <img src="./CupcakeDeCereja.png" class="card-imagem" alt="Cupcake de Cereja">
+        <div class="card-corpo">
+          <h3 class="card-titulo">Cupcake de Cereja</h3>
+          <div class="card-preco">R$ 74,99</div>
+          <button class="btn-comprar">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+      
+      <div class="card-produto">
+        <img src="./CupcakeDeChocolate.png" class="card-imagem" alt="Cupcake de Chocolate">
+        <div class="card-corpo">
+          <h3 class="card-titulo">Cupcake de Chocolate</h3>
+          <div class="card-preco">R$ 74,99</div>
+          <button class="btn-comprar">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+      
+      <div class="card-produto">
+        <img src="./CupcakeDeRedVelvet.png" class="card-imagem" alt="Cupcake Red Velvet">
+        <div class="card-corpo">
+          <h3 class="card-titulo">Cupcake Red Velvet</h3>
+          <div class="card-preco">R$ 74,99</div>
+          <button class="btn-comprar">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+      
+      <div class="card-produto">
+        <img src="./CupcakeDeBaunilha.png" class="card-imagem" alt="Cupcake de Baunilha">
+        <div class="card-corpo">
+          <h3 class="card-titulo">Cupcake de Baunilha</h3>
+          <div class="card-preco">R$ 74,99</div>
+          <button class="btn-comprar">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cardápio de Doces -->
+    <h2 class="categoria-titulo">Doces</h2>
+    <div class="cards-container">
+      <div class="card-produto">
+        <img src="./DoceDeBichoDePe.png" class="card-imagem" alt="Doce de Bicho de Pé">
+        <div class="card-corpo">
+          <h3 class="card-titulo">Doce de Bicho de Pé</h3>
+          <div class="card-preco">R$ 74,99</div>
+          <button class="btn-comprar">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+      
+      <div class="card-produto">
+        <img src="./DoceDeBrigadeiro.png" class="card-imagem" alt="Brigadeiro">
+        <div class="card-corpo">
+          <h3 class="card-titulo">Brigadeiro</h3>
+          <div class="card-preco">R$ 74,99</div>
+          <button class="btn-comprar">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+      
+      <div class="card-produto">
+        <img src="./DoceDeNinho.png" class="card-imagem" alt="Doce de Ninho">
+        <div class="card-corpo">
+          <h3 class="card-titulo">Doce de Ninho</h3>
+          <div class="card-preco">R$ 74,99</div>
+          <button class="btn-comprar">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+      
+      <div class="card-produto">
+        <img src="./DoceDeSupresaDeUva.png" class="card-imagem" alt="Doce Surpresa de Uva">
+        <div class="card-corpo">
+          <h3 class="card-titulo">Doce Surpresa de Uva</h3>
+          <div class="card-preco">R$ 74,99</div>
+          <button class="btn-comprar">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cardápio de Páscoa -->
+    <h2 class="categoria-titulo">Páscoa</h2>
+    <div class="cards-container">
+      <div class="card-produto">
+        <img src="./OvoRecheado.png" class="card-imagem" alt="Ovo de Páscoa Recheado">
+        <div class="card-corpo">
+          <h3 class="card-titulo">Ovo de Páscoa Recheado</h3>
+          <div class="card-preco">R$ 74,99</div>
+          <button class="btn-comprar">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+      
+      <div class="card-produto">
+        <img src="./OvoSimples.png" class="card-imagem" alt="Ovo de Páscoa Simples">
+        <div class="card-corpo">
+          <h3 class="card-titulo">Ovo de Páscoa Simples</h3>
+          <div class="card-preco">R$ 74,99</div>
+          <button class="btn-comprar">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+      
+      <div class="card-produto">
+        <img src="./ComboDeOvos.png" class="card-imagem" alt="Combo de Ovos de Páscoa">
+        <div class="card-corpo">
+          <h3 class="card-titulo">Combo de Ovos de Páscoa</h3>
+          <div class="card-preco">R$ 74,99</div>
+          <button class="btn-comprar">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+      
+      <div class="card-produto">
+        <img src="./OvoDeCafé.png" class="card-imagem" alt="Ovo de Brigadeiro de Café">
+        <div class="card-corpo">
+          <h3 class="card-titulo">Ovo de Brigadeiro de Café</h3>
+          <div class="card-preco">R$ 74,99</div>
+          <button class="btn-comprar">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal da História -->
+  <div class="modal fade historia-modal" id="historiaModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">
+            <i class="fa-solid fa-cake-candles"></i> Nossa Doce História
+          </h2>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div style="text-align: center; margin-bottom: 20px;">
+            <img src="./Sonho.png" alt="Logo Sweet Dreams" style="width: 150px; margin-bottom: 15px;">
+          </div>
+          <p style="text-align: justify; line-height: 1.6;">
+            Um Sonho de Açúcar era uma confeitaria mágica que surgiu de um sonho de infância. Seus donos, apaixonados por doces e arte, decidiram transformar sua paixão em realidade. Com muito amor e dedicação, criaram uma loja encantadora, onde cada doce era uma obra de arte.
+          </p>
+          <p style="text-align: justify; line-height: 1.6;">
+            Os clientes adoravam visitar Um Sonho de Açúcar não apenas para satisfazer seu paladar, mas também para se maravilhar com as criações incríveis. Bolos, tortas, cupcakes e outros doces eram feitos com ingredientes frescos e amor.
+
+          </p>
+          <p style="text-align: justify; line-height: 1.6;">
+            Com o tempo, a confeitaria se tornou um ponto de encontro para amigos e familiares, que se reuniam para compartilhar momentos felizes e doces. Um Sonho de Açúcar era mais do que uma confeitaria - era um lugar onde a magia acontecia e os sonhos se tornavam realidade.
+
+          </p>
+          <div style="text-align: center; margin-top: 30px;">
+            <img src="./doce.png" alt="Bolo da Confeitaria" style="width: 100%; max-width: 400px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" data-bs-dismiss="modal" style="background-color: var(--rosa-escuro); color: white;">
+            Fechar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Login -->
+  <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content p-0" style="border-radius: 20px;">
+        <div class="modal-body p-0">
+          <div class="container-custom">
+            <div class="content">
+              <div class="left-panel">
+                <img src="./Sonho.png" alt="Logo Sugar Dreams" />
+                <h2>Bem-vindo à Sweet Dreams!</h2>
+                <p>Entre com suas credenciais para acessar um mundo doce e encantador feito especialmente para você. 🍰</p>
+              </div>
+              <div class="right-panel">
+                <h2>Login</h2>
+                <form id="frmLogin">
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="txtNome" placeholder="Nome completo" required />
+                    <i class="bi bi-person"></i>
+                  </div>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="txtLogin" placeholder="Usuário" required />
+                    <i class="bi bi-person-badge"></i>
+                  </div>
+                  <div class="input-group">
+                    <input type="password" class="form-control" id="txtSenha" placeholder="Senha" required />
+                    <i class="bi bi-lock"></i>
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-box-arrow-in-right"></i> Entrar
+                  </button>
+                  <a href="#" id="abrirCadastro" style="display: block; text-align: center; margin-top: 15px; color: var(--rosa-escuro);">
+                    <i class="bi bi-box-arrow-in-left"></i> Não tem uma conta? Crie aqui
+                  </a>
+                  <div>
+                    <h6 id="notificacao"></h6>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>	
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Cadastro -->
+  <div class="modal fade" id="cadastroModal" tabindex="-1" aria-labelledby="cadastroModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content p-0" style="border-radius: 20px;">
+        <div class="modal-body p-0">
+          <div class="container-custom">
+            <div class="content">
+              <div class="left-panel">
+                <img src="./Sonho.png" alt="Logo Sugar Dreams" />
+                <h2>Crie sua conta!</h2>
+                <p>Faça parte do nosso mundo açucarado e aproveite todos os benefícios. 🍩</p>
+              </div>
+              <div class="right-panel">
+                <h2>Cadastro</h2>
+                <form id="frmCadastro">
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="cadNome" placeholder="Nome completo" required />
+                    <i class="bi bi-person"></i>
+                  </div>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="cadLogin" placeholder="Usuário" required />
+                    <i class="bi bi-person-badge"></i>
+                  </div>
+                  <div class="input-group">
+                    <input type="password" class="form-control" id="cadSenha" placeholder="Senha" required />
+                    <i class="bi bi-lock"></i>
+                  </div>
+                  <div class="input-group">
+                    <input type="password" class="form-control" id="cadConfirmaSenha" placeholder="Confirmar senha" required />
+                    <i class="bi bi-lock-fill"></i>
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-person-plus"></i> Cadastrar
+                  </button>
+                  <a href="#" id="voltarLogin" style="display: block; text-align: center; margin-top: 15px; color: var(--rosa-escuro);">
+                    <i class="bi bi-arrow-left-circle"></i> Já tem uma conta? Clique aqui
+                  </a>
+                  <div>
+                    <h6 id="notificacaoCadastro"></h6>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Política de Privacidade -->
+  <div class="politica-privacidade collapse" id="politica">
+    <div class="d-flex justify-content-end sticky-top">
+      <a class="btn" role="button" onClick="document.getElementById('politica').classList.remove('show');" alt="Fechar janela" style="color: white;">
+        <i class="fa fa-close fa-2x"></i>
+      </a>
+    </div>
+    <!-- Conteúdo da política de privacidade -->
+    [Seu conteúdo existente da política de privacidade aqui]
+  </div>
+
+  <!-- Cookies -->
+  <div class="cookieConsentContainer" id="cookieConsentContainer" style="display: none;">
+    <div class="cookieTitle">
+      <b>Nossos cookies estão atualizados! @2025</b>
+    </div>
+    <div class="cookieDesc">
+      <p>
+        Ao usar este site, você automaticamente aceita que seu computador utilize os cookies em seu navegador, para melhorar sua experiência de navegação em todas as páginas.
+        <a href="#politica" data-bs-toggle="collapse" data-bs-target="#politica" aria-expanded="false" aria-controls="politica">Saiba mais</a>
+      </p>
+    </div>
+    <div class="cookieButton">
+      <a onClick="purecookieDismiss();">Entendido</a>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer>
+    <div class="footer-container">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <h5><i class="fa-solid fa-cake-candles"></i> Sweet Dreams</h5>
+          <p>Confeitaria artesanal feita com amor</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Contato</h5>
+          <p><i class="fa-solid fa-phone"></i> (00) 1234-5678</p>
+          <p><i class="fa-solid fa-envelope"></i> contato@sweetdreams.com</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Redes Sociais</h5>
+          <a href="#" style="color: white; margin: 0 10px; font-size: 20px;"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" style="color: white; margin: 0 10px; font-size: 20px;"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" style="color: white; margin: 0 10px; font-size: 20px;"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <hr style="background-color: var(--rosa-medio);">
+      <p class="mb-0">© 2023 Sweet Dreams Confeitaria. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./cookies.js"></script>
+  <script src="./index.js"></script>
+  <script src="./bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
+  
+  <script>
+    function abrirMenu() {
+      document.getElementById("sidebar").style.width = "250px";
+    }
+
+    function fecharMenu() {
+      document.getElementById("sidebar").style.width = "0";
+    }
+
+    function abrirHistoria() {
+      var historiaModal = new bootstrap.Modal(document.getElementById('historiaModal'));
+      historiaModal.show();
+    }
+
+    // Fechar o menu quando clicar fora
+    document.addEventListener('click', function(event) {
+      const sidebar = document.getElementById('sidebar');
+      const menuButton = document.querySelector('.menu-button');
+      
+      if (!sidebar.contains(event.target) && event.target !== menuButton && !menuButton.contains(event.target)) {
+        sidebar.style.width = '0';
+      }
+    });
+
+    // Adicionar evento de clique nos botões de compra
+    document.querySelectorAll('.btn-comprar').forEach(button => {
+      button.addEventListener('click', function() {
+        const produto = this.parentElement.querySelector('.card-titulo').textContent;
+        alert(`"${produto}" foi adicionado ao carrinho!`);
+      });
+    });
+  </script>
+
+
+
+</body>
+</html>
